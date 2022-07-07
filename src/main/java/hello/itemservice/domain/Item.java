@@ -10,7 +10,7 @@ import java.util.Locale;
 @Data
 public class Item {
 
-    private Long key;
+    private Long id;
 
     private String itemName;
     private Integer price;
