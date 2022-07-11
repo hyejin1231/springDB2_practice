@@ -9,12 +9,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-@SpringBootTest
+/**
+ * 임베디드 모드 DB
+ * : H2 데이터베이스는 자바로 개발되어 있고, JVM안에서 메모리 모드로 동작하는 특별한 기능을 제공한다.
+ * 애플리케이션이 종료되면 임베디드 모드로 동작하는 H2 데이터베이스도 함께 종료되고, 데이터도 모두 사라진다.
+ * @Transactional
+ * :테스트를 트랜잭션 안에서 실행하고 테스트가 끝나면 트랜잭션을 자동으로 롤백시켜 버린다.
+ */
+@Transactional // 테스트 데이터 초기화를 위해 트랜잭션 적용하고 롤백하는 방식
+@SpringBootTest // @SpringBootTest 애노테이션은 @SpringBootApplication을 찾아서 설정으로 사용한다.
 public class ItemRepositoryTest {
 
     @Autowired
